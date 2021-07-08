@@ -1,5 +1,5 @@
 ---
-- hosts: web
+- hosts: all
   become: yes
   tasks:
    - name: Install Java 1.8
@@ -77,3 +77,7 @@
 
    - debug:
        var: tstatus.stdout_lines
+   - name: Deploy a war file
+     copy: 
+      src: /root/labs/docker/images/code/sampleapp.war
+      dest: /opt/tomcat/webapps/
